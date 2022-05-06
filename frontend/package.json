@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --port 3000 --host",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview --port 3000 --host"
+    "preview": "vite preview --port 80 --host"
   },
   "dependencies": {
     "axios": "^0.27.2",

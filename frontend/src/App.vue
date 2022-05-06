@@ -9,7 +9,7 @@ interface Data {
 let result: Ref<string> = ref("Hi")
 
 const getData = async () => {
-  const response = await axios.get("http://localhost:8000/test")
+  const response = await axios.get("http://0.0.0.0:8000/test")
   const data: Data = response.data
   result.value = data.message
   console.log(result.value)
