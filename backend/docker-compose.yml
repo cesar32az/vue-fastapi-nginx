@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    #command: python backend/main.py
+
+volumes:
+  backend:

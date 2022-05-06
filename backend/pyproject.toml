@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Julio Rodriguez <julio.rodriguez@ubiquo.io>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-dotenv = "^0.20.0"
+fastapi = "^0.75.2"
+uvicorn = "^0.17.6"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.3.0"
+isort = "^5.10.1"
+poethepoet = "^0.13.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+# Format config
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 79
+
+[tool.black]
+line-length = 79
+target-version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+    (
+    /(
+        \.eggs         # exclude a few common directories in the
+        | \.git        # root of the project
+        | \.mypy_cache
+        | \.venv
+        | _build
+        | buck-out
+        | build
+        | dist
+    )/
+    | foo.py           # also separately exclude a file named foo.py in
+    | README.md
+    )
+'''
+# Scripts
+
+[tool.poetry.scripts]
+dev = "backend.main:main"
+
+[tool.poe.tasks]
+dev = ""
+# examples
+# test       = "pytest --cov=poethepoet" 
+# mksandwich = { script = "backend.main:main" } 
+# serve = "uvicorn --reload --port 4000 --host 0.0.0.0 backend.main:app"
