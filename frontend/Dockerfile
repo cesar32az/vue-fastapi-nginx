@@ -1,28 +1,17 @@
-FROM node:14.16-slim as builder
+FROM node:slim
 
 WORKDIR /app
 
-
 # Copy the package.json and install dependencies
 COPY package*.json ./
+
 RUN npm install
 
 # Copy rest of the files
 COPY . .
 
+RUN chown node:node /app
 
-# Build the project
-RUN npm run build
+# Build the projectproject
 
-FROM nginx as production-build
-COPY ./nginx.conf /etc/nginx/nginx.conf
-
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copy from the stahg 1
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD npm run dev

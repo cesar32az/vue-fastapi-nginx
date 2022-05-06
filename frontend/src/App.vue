@@ -19,7 +19,7 @@ const message = computed(() => result.value)
 
 <template>
   <button @click="getData">
-    GET asdf
+    GET
   </button>
   <div ref="message">
     The message is: {{ message }}
